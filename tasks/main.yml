@@ -22,5 +22,6 @@
 
 - name: updatedb ( mlocate update )
   shell: updatedb
+  changed_when: false
   tags: [yum-default]
 
