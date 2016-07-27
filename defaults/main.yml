@@ -40,6 +40,8 @@ yum_default:
     - { name: tcl-devel,      repo: ~ }
     - { name: perl-JSON,      repo: ~ }
     - { name: bc,             repo: ~ }
+    # @todo: service sysstat start? It's depend on you :)
+    - { name: sysstat,        repo: ~ }
     - { name: bash-completion,repo: epel }
 #   for munin MySQL plugins
     - { name: perl-IPC-ShareLite,  repo: epel }
