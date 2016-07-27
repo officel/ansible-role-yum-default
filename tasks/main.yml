@@ -1,2 +1,26 @@
 ---
 # tasks file for ansible-role-yum-default
+
+- name: "pre install only AmazonLinux"
+  # *系の install で AmazonLinux に入っていないのがあるとコンフリクトするので先に処理
+  yum:
+    name: "{{ item.name }}"
+    state: installed
+    enablerepo: "{{ item.repo  | default('') }}"
+    disablerepo: "{{ item.drepo | default('') }}"
+  when: "ansible_distribution == 'Amazon'"
+  with_items: "{{ yum_default_only_al }}"
+  tags: [yum-default]
+
+- name: install packages
+  yum:
+    name: "{{ item.name }}"
+    state: installed
+    enablerepo: "{{ item.repo | default('') }}"
+  with_items: "{{ yum_default }}"
+  tags: [yum-default]
+
+- name: updatedb ( mlocate update )
+  shell: updatedb
+  tags: [yum-default]
+
