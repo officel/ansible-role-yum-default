@@ -35,7 +35,8 @@ yum_default:
     - { name: sqlite-devel,   repo: ~ }
     - { name: readline-devel, repo: ~ }
     - { name: tk,             repo: base }
-    - { name: tk-devel,       repo: base }
+    # @todo Amazon Linux error
+#    - { name: tk-devel,       repo: base }
     - { name: tcl,            repo: ~ }
     - { name: tcl-devel,      repo: ~ }
     - { name: perl-JSON,      repo: ~ }
